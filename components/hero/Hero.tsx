@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { motion, useScroll } from 'framer-motion'
-import { useRef, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '@/components/ui/Button'
 import RadarOverlay from './RadarOverlay'
 
@@ -57,7 +57,7 @@ export default function Hero() {
                 className="text-[10px] tracking-[0.35em] text-[#C8A96E] uppercase"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                COGNITIVE ELECTRONIC WARFARE — INDIA
+                SOVEREIGN AI FOR THE ELECTROMAGNETIC AGE // BUILD 0.1
               </span>
             </motion.div>
 
@@ -105,10 +105,10 @@ export default function Hero() {
               className="mt-7 text-[#6B6B6B] leading-relaxed max-w-lg"
               style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 'clamp(0.95rem, 1.4vw, 1.15rem)' }}
             >
-              The next war will be won in the spectrum
-              before a single shot is fired.
+              India cannot import its electromagnetic sovereignty.
               <br />
-              VAYRA builds the AI that sees it first.
+              VAYRA is building the AI-native defence technology
+              company that ensures it doesn't have to.
             </motion.p>
 
             {/* CTA */}
@@ -118,7 +118,7 @@ export default function Hero() {
               transition={{ delay: 1.2, duration: 0.5 }}
               className="mt-10 flex flex-wrap gap-4"
             >
-              <Button variant="gold" href="#mission">OUR MISSION →</Button>
+              <Button variant="gold" href="#thesis">THE THESIS →</Button>
               <Button variant="outline" href="#contact">TALK TO US</Button>
             </motion.div>
 

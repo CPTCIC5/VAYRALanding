@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useScrollProgress } from '@/hooks/useScrollProgress'
 
 const navLinks = [
-  { label: 'NETRA', href: '#products' },
-  { label: 'MANAS', href: '#products' },
-  { label: 'SMRITI', href: '#products' },
-  { label: 'MISSION', href: '#mission' },
+  { label: 'THESIS', href: '#thesis' },
+  { label: 'MODULE 01', href: '#products' },
+  { label: 'AMBITION', href: '#ambition' },
+  { label: 'TEAM', href: '#team' },
 ]
 
 export default function Nav() {
