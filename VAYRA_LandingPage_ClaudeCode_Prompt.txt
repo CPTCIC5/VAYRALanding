@@ -1,0 +1,580 @@
+================================================================
+VAYRA — LANDING PAGE
+CLAUDE CODE MASTER PROMPT
+================================================================
+
+REFERENCE SITE: https://www.cx2.com
+Build something at this level or better. Study CX2's structure —
+dark, minimal, military-grade, product names with personality,
+zero fluff. Then make it distinctly Indian and distinctly VAYRA.
+
+================================================================
+COMPANY CONTEXT
+================================================================
+
+Company: VAYRA
+Tagline: Electromagnetic Dominance. Made in India.
+Footer line: see. learn. dominate.
+Location: Bengaluru, India
+Mission: India's first AI-native Electronic Warfare company.
+         Building cognitive EW systems for the Indian Armed Forces.
+
+Products:
+- NETRA (Sanskrit: eye) — Cognitive Signal Intelligence
+- MANAS (Sanskrit: mind) — Autonomous ECM Decision Engine  
+- SMRITI (Sanskrit: memory) — Dynamic Knowledge Base
+
+Founders:
+- Aryan Jain — AI systems, full stack, product
+- Yogendra Panjarale — hardware, embedded systems, avionics
+
+Supported by: iDEX — Defence Innovation Organisation,
+              Ministry of Defence, Government of India
+
+================================================================
+TECH STACK
+================================================================
+
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion for ALL animations
+- GSAP + ScrollTrigger for scroll-based animations
+- Three.js for 3D background elements (subtle, not heavy)
+- next/font for typography
+- Deployed on Vercel
+
+================================================================
+DESIGN DIRECTION
+================================================================
+
+AESTHETIC: Military-grade dark minimalism with Indian soul.
+Think CX2 meets Anduril meets something that could only come
+from India. Not corporate. Not startup-y. Serious. Purposeful.
+
+COLOR PALETTE:
+--bg:          #000000  (pure black)
+--surface:     #0A0A0A  (cards, sections)
+--border:      #1A1A1A  (subtle borders)
+--text:        #F0EDE8  (warm off-white, not pure white)
+--text-muted:  #6B6B6B  (secondary text)
+--accent:      #C8A96E  (deep gold/amber — Indian warmth)
+--accent-dim:  #7A6540  (dimmed gold for borders/glows)
+--danger:      #E84040  (threat indicator red)
+--safe:        #40A870  (classified green)
+
+TYPOGRAPHY:
+- Display/Hero: "Bebas Neue" or "Anton" — bold, military, commanding
+- Headings: "Space Mono" — technical, precise, monospace character
+- Body: "DM Sans" — clean, readable, modern
+- Accent labels: "JetBrains Mono" — code/data feel for stats and numbers
+
+CRITICAL PERFORMANCE RULES:
+- Every animation must use transform and opacity only (GPU composited)
+- No layout-triggering animations (no width/height/top/left)
+- Use will-change: transform sparingly and only on active animated elements
+- Three.js scene must use instanced meshes, not individual objects
+- Lazy load everything below the fold
+- Target 60fps on mid-range devices
+- No animation should block interactivity
+
+================================================================
+PAGE STRUCTURE — BUILD IN THIS EXACT ORDER
+================================================================
+
+SECTION 1: NAV
+─────────────────────────────────────────────────────────────────
+Fixed. Ultra-minimal. Becomes more opaque on scroll.
+
+Left: VAYRA wordmark in Bebas Neue, tracked wide, gold color
+Center: [NETRA] [MANAS] [SMRITI] [MISSION] — small caps, Space Mono
+Right: [CONTACT] button — thin gold border, no fill, hover fills gold
+
+On scroll past 100px: nav background becomes rgba(0,0,0,0.9) with
+backdrop-filter: blur(20px). Smooth transition.
+
+Mobile: hamburger. Full screen overlay menu with staggered link reveals.
+
+─────────────────────────────────────────────────────────────────
+SECTION 2: HERO
+─────────────────────────────────────────────────────────────────
+Full viewport height. The most important section.
+
+BACKGROUND:
+A subtle Three.js canvas covering the full hero. Render a slowly
+rotating 3D wireframe globe or radar dish — very faint, almost
+invisible (opacity 0.06). The wireframe should be in gold.
+On top, add a scanline effect using CSS (repeating linear gradient
+with very low opacity horizontal lines — the old CRT monitor look).
+Add a very subtle grain/noise texture overlay using an SVG filter.
+
+LAYOUT:
+Left-aligned text, right side has the 3D visual.
+
+TOP LABEL (appears first, slides up):
+  [JetBrains Mono, gold, tiny, tracked wide]
+  "COGNITIVE ELECTRONIC WARFARE — INDIA"
+
+MAIN HEADLINE (massive, full width, Bebas Neue):
+  Line 1: "ELECTROMAGNETIC"
+  Line 2: "DOMINANCE."
+  Line 3 (gold accent): "MADE IN INDIA."
+
+Each line animates in independently with a staggered upward reveal.
+Use clip-path: inset(0 0 100% 0) → inset(0 0 0% 0) for a clean
+text reveal without opacity — looks premium, not faded.
+
+SUBLINE (DM Sans, muted white, appears after headline):
+  "The next war will be won in the spectrum
+   before a single shot is fired.
+   VAYRA builds the AI that sees it first."
+
+CTA ROW:
+  [OUR MISSION →]  [TALK TO US]
+  First button: gold fill, black text, hover inverse
+  Second button: transparent, gold border, hover gold fill
+
+SCROLL INDICATOR:
+  Bottom center. "SCROLL" in tiny monospace with a thin animated
+  line extending downward that pulses. Disappears after first scroll.
+
+─────────────────────────────────────────────────────────────────
+SECTION 3: MISSION STRIP
+─────────────────────────────────────────────────────────────────
+Full width. Dark surface (#0A0A0A). Left border: 2px solid gold.
+Padding: generous. No heading. Just one sentence in large DM Sans.
+
+Content:
+"We build AI-native electronic warfare systems for the Indian
+Armed Forces and allied nations. Starting with cognitive EW —
+the capability India does not have today."
+
+Animation: Text reveals word by word as it enters viewport.
+Use Intersection Observer + Framer Motion staggerChildren.
+
+─────────────────────────────────────────────────────────────────
+SECTION 4: THE PROBLEM
+─────────────────────────────────────────────────────────────────
+Two column layout. Left column sticky on desktop.
+
+LEFT COLUMN (sticky, large heading):
+  [Space Mono, large, white]
+  "EVERY EW SYSTEM
+   IN INDIAN SERVICE
+   IS BLIND TO THREATS
+   IT HAS NEVER SEEN."
+
+RIGHT COLUMN (scrolls normally, 3 paragraphs):
+  Para 1:
+  "Traditional Electronic Warfare works from a fixed database.
+  It knows what it was programmed to know. When adversaries
+  adapt — and they always do — the system fails silently."
+
+  Para 2:
+  "The last decade of conflict proved this. Nagorno-Karabakh.
+  Ukraine. Gaza. Wars decided not by numbers but by who
+  controlled the electromagnetic spectrum. The side with
+  cognitive EW won. The side without it lost."
+
+  Para 3 (gold accent text):
+  "India has zero indigenous cognitive EW capability.
+  VAYRA is building it."
+
+Each paragraph fades and slides in as user scrolls into it.
+Use GSAP ScrollTrigger for this section.
+
+─────────────────────────────────────────────────────────────────
+SECTION 5: STATS BAR
+─────────────────────────────────────────────────────────────────
+Full width dark strip. 4 stats in a row. Horizontal dividers between.
+
+Stat 1: "86%"    label: "Signal Classification Accuracy"
+Stat 2: "96%"    label: "ECM Decision Accuracy"
+Stat 3: "24"     label: "Modulation Types Recognised"
+Stat 4: "2.5M"   label: "Signal Samples Trained On"
+
+Numbers animate counting up when scrolled into view.
+Use a counter animation — start from 0, ease to final value.
+Numbers in Bebas Neue, large. Labels in JetBrains Mono, tiny, muted.
+
+─────────────────────────────────────────────────────────────────
+SECTION 6: PRODUCTS
+─────────────────────────────────────────────────────────────────
+Section heading: "SYSTEMS" in Bebas Neue, large, left-aligned.
+
+Three product cards. Horizontal scroll on mobile, grid on desktop.
+Cards are dark (#0A0A0A), gold top border (2px), generous padding.
+
+On hover: card lifts (translateY -4px), gold border brightens,
+subtle gold glow appears (box-shadow: 0 0 40px rgba(200,169,110,0.1))
+
+CARD 1 — NETRA:
+  Top label: [JetBrains Mono, gold, tiny] "SIGNAL INTELLIGENCE"
+  Name: "NETRA" [Bebas Neue, large, white]
+  Sanskrit meaning: [JetBrains Mono, tiny, muted] "/ eye /"
+  Divider line
+  Description: "AI-powered RF signal classification that sees known
+  and unknown threats in real time. Unknown signals flagged
+  automatically — never misclassified, never ignored."
+  Bottom: [Space Mono, tiny, muted] "CNN-LSTM · RADIOML 2018 · EDGE INFERENCE"
+  Arrow icon top right, gold
+
+CARD 2 — MANAS:
+  Top label: "DECISION ENGINE"
+  Name: "MANAS"
+  Sanskrit: "/ mind /"
+  Description: "Reinforcement learning agent that maps every threat
+  to the optimal countermeasure in milliseconds. Learns from every
+  engagement. Gets smarter in the field."
+  Bottom: "PPO · 6 ECM MODES · 200K SIMULATED ENGAGEMENTS"
+
+CARD 3 — SMRITI:
+  Top label: "KNOWLEDGE BASE"
+  Name: "SMRITI"
+  Sanskrit: "/ memory /"
+  Description: "Every engagement logged. Every threat remembered.
+  Response time improves with operational experience. The system
+  that fights today is faster than the one that fought yesterday."
+  Bottom: "DYNAMIC · PERSISTENT · SELF-IMPROVING"
+
+Animation: Cards reveal with staggered slide-up as section enters view.
+
+─────────────────────────────────────────────────────────────────
+SECTION 7: THE CASE FOR NOW
+─────────────────────────────────────────────────────────────────
+Full width. Large heading centered: "THE WINDOW IS OPEN."
+Subheading: "It will not stay open."
+
+Three columns below. Each with a thin gold top border and number.
+
+01 / THE THREAT IS REAL
+"China and Pakistan have invested heavily in cognitive EW.
+India's borders are contested in the electromagnetic domain
+every day. The capability gap is not theoretical."
+
+02 / THE TECHNOLOGY IS READY
+"Deep learning for signal classification. Reinforcement learning
+for autonomous decisions. Edge inference for field deployment.
+These technologies exist. What India lacks is the team to put
+them together for Indian conditions."
+
+03 / THE TIMING IS NOW
+"India is in the middle of a defence indigenisation push that
+will not repeat. The procurement channels are open. The
+institutions are ready to partner. A company that builds the
+right thing in the next three years will define this domain
+for the next thirty."
+
+Animation: columns reveal left to right with slight stagger.
+On scroll enter, each column does a clip-path reveal from bottom.
+
+─────────────────────────────────────────────────────────────────
+SECTION 8: VISION STATEMENT
+─────────────────────────────────────────────────────────────────
+Full viewport height section. Centered. Maximum impact.
+
+Large centered text, Bebas Neue, white, massive:
+"THIS IS MODULE 1."
+
+Below that in DM Sans, centered, medium size, muted:
+"Cognitive EW for the Indian Army is where we start.
+Naval EW, air defence EW, and space domain awareness follow.
+We are not building a product.
+We are building India's first AI-native defence technology company."
+
+Below that in Space Mono, gold, small:
+"The ambition: Palantir-scale sovereign intelligence and EW platform
+for the Indian Armed Forces and allied nations."
+
+Background for this section: add a very subtle radial gradient from
+gold (0.03 opacity) at center fading to pure black.
+
+Animation: "THIS IS MODULE 1." types itself letter by letter on scroll enter.
+Use a typewriter effect with cursor blink. Then cursor disappears.
+Below text fades in after typewriter completes.
+
+─────────────────────────────────────────────────────────────────
+SECTION 9: TEAM
+─────────────────────────────────────────────────────────────────
+Section heading: "FOUNDERS" — Space Mono, left-aligned, muted.
+
+Two cards side by side. Minimal. No photos needed (can add later).
+
+LEFT CARD — ARYAN JAIN:
+  Role label: [JetBrains Mono, gold, tiny] "AI · PRODUCT · SYSTEMS"
+  Name: "ARYAN JAIN" [Space Mono, medium, white]
+  Bio: "4+ years building production AI for international clients.
+  Founding engineer at two VC-backed startups. Built the NETRA
+  cognitive EW prototype from zero before any grant or validation."
+  Links: [LinkedIn ↗]
+
+RIGHT CARD — YOGENDRA PANJARALE:
+  Role label: "HARDWARE · EMBEDDED · AVIONICS"
+  Name: "YOGENDRA PANJARALE"
+  Bio: "BITS Pilani. Built rocket avionics with dual-redundant sensor
+  fusion validated under high-G conditions. The engineer who asks
+  the questions that change the direction."
+  Links: [LinkedIn ↗]
+
+Animation: Cards slide in from left and right respectively.
+
+─────────────────────────────────────────────────────────────────
+SECTION 10: SUPPORTED BY
+─────────────────────────────────────────────────────────────────
+Minimal strip. Center aligned.
+
+Small label: [JetBrains Mono, muted] "SUPPORTED BY"
+Logo/Text: "iDEX — Defence Innovation Organisation"
+Subtext: "Ministry of Defence, Government of India"
+
+Keep this dignified and minimal. No badges or colorful elements.
+
+─────────────────────────────────────────────────────────────────
+SECTION 11: CONTACT / CTA
+─────────────────────────────────────────────────────────────────
+Dark section. Centered. Strong CTA.
+
+Heading [Bebas Neue, large]: "READY TO TALK?"
+Subtext [DM Sans, muted]: "We are looking for partners, operators,
+and institutions serious about India's electromagnetic future."
+
+Two buttons:
+[GET IN TOUCH] — gold fill, black text
+[LEARN MORE] — transparent, gold border
+
+Email below buttons: [JetBrains Mono, tiny, muted]
+contact@vayra.in  (placeholder)
+
+─────────────────────────────────────────────────────────────────
+SECTION 12: FOOTER
+─────────────────────────────────────────────────────────────────
+Pure black. Three columns.
+
+Left:
+  VAYRA wordmark (gold)
+  "Built in Bengaluru, India"
+  Indian flag emoji 🇮🇳
+
+Center nav links:
+  Mission · Products · Team · Contact · Privacy
+
+Right:
+  © 2026 VAYRA. All rights reserved.
+
+Bottom full-width text (very large, Bebas Neue, opacity 0.04):
+  "SEE. LEARN. DOMINATE."  — decorative, barely visible watermark
+
+================================================================
+ANIMATION MASTER PLAN
+================================================================
+
+PERFORMANCE RULES (non-negotiable):
+- All Framer Motion animations: use transform + opacity only
+- GSAP animations: force3D: true on all tweens
+- Three.js: requestAnimationFrame, dispose unused geometries
+- Images: next/image with lazy loading and blur placeholder
+- Fonts: next/font with display: swap
+- No animation starts until element is in viewport
+- Use IntersectionObserver for all scroll triggers
+
+ANIMATION INVENTORY:
+
+1. PAGE LOAD (runs once, <1200ms total):
+   - Nav fades in: 0ms delay, 400ms duration
+   - Hero label slides up: 200ms delay
+   - Hero headline lines reveal (clip-path): 400/600/800ms stagger
+   - Hero subline fades up: 1000ms delay
+   - Hero CTA fades up: 1200ms delay
+   - Three.js scene fades in: 0ms, 2000ms duration (slow, atmospheric)
+
+2. SCROLL ANIMATIONS (Framer Motion whileInView):
+   - Mission strip: word by word reveal, 50ms stagger
+   - Problem section paragraphs: fade + translateY(20px), 200ms stagger
+   - Stats: counter animation, 1000ms ease-out
+   - Product cards: translateY(40px) → 0, 150ms stagger
+   - Case columns: clip-path bottom reveal, 200ms stagger
+   - Vision typewriter: triggered by scroll, 50ms per character
+   - Team cards: translateX (left/right), simultaneous
+
+3. HOVER STATES (CSS transitions, 200ms ease):
+   - Nav links: subtle gold underline slides in from left
+   - Product cards: translateY(-4px), gold glow
+   - Buttons: background fill slides up (clip-path trick)
+   - Footer links: opacity 0.5 → 1
+
+4. THREE.JS SCENE (hero background):
+   - Wireframe radar/globe, rotates at 0.0005 rad/frame (very slow)
+   - Points geometry for stars/particles (500 points max)
+   - Fog to fade edges
+   - Pauses when tab is not visible (document.visibilityState)
+   - Destroys and recreates on window resize (debounced 500ms)
+
+================================================================
+COMPONENT FILE STRUCTURE
+================================================================
+
+app/
+├── layout.tsx          # fonts, metadata, global styles
+├── page.tsx            # assembles all sections
+├── globals.css         # CSS variables, base styles, scanline effect
+components/
+├── nav/
+│   └── Nav.tsx
+├── hero/
+│   ├── Hero.tsx
+│   └── HeroScene.tsx   # Three.js canvas, dynamically imported
+├── sections/
+│   ├── Mission.tsx
+│   ├── Problem.tsx
+│   ├── Stats.tsx
+│   ├── Products.tsx
+│   ├── CaseForNow.tsx
+│   ├── Vision.tsx
+│   ├── Team.tsx
+│   ├── SupportedBy.tsx
+│   ├── Contact.tsx
+│   └── Footer.tsx
+├── ui/
+│   ├── Button.tsx
+│   ├── SectionLabel.tsx  # the tiny JetBrains Mono labels
+│   └── GoldDivider.tsx
+hooks/
+└── useScrollProgress.ts  # tracks scroll position for nav opacity
+
+================================================================
+GLOBALS.CSS — CRITICAL STYLES TO INCLUDE
+================================================================
+
+/* Scanline effect — apply to hero only */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Grain texture overlay */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,..."); /* SVG noise */
+  opacity: 0.025;
+  animation: grain 0.5s steps(1) infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  30% { transform: translate(3%, -15%); }
+  50% { transform: translate(12%, 9%); }
+  70% { transform: translate(9%, 4%); }
+  90% { transform: translate(-1%, 7%); }
+}
+
+/* Custom cursor */
+*, *::before, *::after {
+  cursor: none !important;
+}
+.cursor {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: #C8A96E;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: transform 0.1s ease;
+}
+.cursor-ring {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(200, 169, 110, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transition: transform 0.15s ease, width 0.2s, height 0.2s;
+}
+/* On hover over links/buttons: cursor-ring expands */
+
+================================================================
+DEPENDENCIES TO INSTALL
+================================================================
+
+npm install framer-motion gsap @gsap/react three @types/three
+npm install next@14 typescript tailwindcss
+npm install @fontsource/bebas-neue @fontsource/dm-sans
+npm install @fontsource/space-mono @fontsource/jetbrains-mono
+
+================================================================
+SPECIFIC INSTRUCTIONS FOR CLAUDE CODE
+================================================================
+
+1. Start with globals.css and layout.tsx — get the fonts and
+   CSS variables in place before building any components.
+
+2. Build Nav first. Make sure scroll opacity works before moving on.
+
+3. Build Hero second. Get the Three.js scene working as a
+   dynamically imported client component (use next/dynamic with
+   ssr: false). Test that it doesn't cause hydration errors.
+
+4. Build all remaining sections in order top to bottom.
+
+5. Add Framer Motion animations last, after all content is
+   confirmed correct. Don't animate broken content.
+
+6. Performance check before finishing:
+   - Open Chrome DevTools → Performance tab
+   - Record scroll through full page
+   - Confirm no frames drop below 55fps
+   - If they do, reduce Three.js particle count first,
+     then simplify GSAP ScrollTrigger instances
+
+7. Mobile check:
+   - Nav collapses to hamburger at <768px
+   - Hero text sizes down gracefully (use clamp())
+   - Product cards become single column horizontal scroll
+   - Three.js scene renders at 0.5x resolution on mobile
+     (use devicePixelRatio capped at 1 on mobile)
+
+8. Final check — make sure these work:
+   - Custom cursor (desktop only, hidden on touch devices)
+   - Grain animation is subtle (barely perceptible)
+   - Scanline is subtle (barely perceptible)
+   - All animations respect prefers-reduced-motion
+   - No horizontal scroll on any viewport
+
+================================================================
+WHAT SUCCESS LOOKS LIKE
+================================================================
+
+Open the page. The hero loads in under 1.5 seconds.
+The Three.js scene is atmospheric, not distracting.
+Scrolling feels smooth — 60fps throughout.
+Every section reveals itself purposefully as you scroll.
+The product cards feel like real military hardware, not a SaaS.
+The vision section typewriter gives you a moment of pause.
+The footer line "SEE. LEARN. DOMINATE." makes you feel something.
+
+Someone who visits this page should leave thinking:
+"These people are serious. They are building something real."
+
+Not: "Cool startup landing page."
+
+================================================================
+END OF PROMPT
+================================================================

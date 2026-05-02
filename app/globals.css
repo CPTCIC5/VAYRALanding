@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #000000;
+  --color-surface: #0A0A0A;
+  --color-border: #1A1A1A;
+  --color-text: #F0EDE8;
+  --color-muted: #6B6B6B;
+  --color-accent: #C8A96E;
+  --color-accent-dim: #7A6540;
+  --color-danger: #E84040;
+  --color-safe: #40A870;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #000000;
+  color: #F0EDE8;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom cursor — desktop only */
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+
+  .cursor {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: #C8A96E;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+  }
+
+  .cursor-ring {
+    position: fixed;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(200, 169, 110, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+    will-change: transform;
+  }
+
+  .cursor-ring.hovered {
+    width: 44px;
+    height: 44px;
+    border-color: rgba(200, 169, 110, 0.9);
+  }
+}
+
+/* Scanline effect — subtle, GPU-composited */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.025) 3px,
+    rgba(0, 0, 0, 0.025) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Scroll indicator pulse */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.6; transform: scaleY(1); }
+  50%       { opacity: 0.15; transform: scaleY(0.4); }
+}
+
+/* Radar sweep — GPU composited (transform only) */
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Radar pulse ring */
+@keyframes radarPulse {
+  0%   { transform: scale(0.6); opacity: 0.6; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* Missile path draw */
+@keyframes drawPath {
+  from { stroke-dashoffset: 600; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* Targeting blink */
+@keyframes targetBlink {
+  0%, 90%, 100% { opacity: 1; }
+  95%           { opacity: 0; }
+}
+
+/* Frequency spectrum bar animation */
+@keyframes specPulse {
+  0%, 100% { transform: scaleY(1);   opacity: 0.6; }
+  50%       { transform: scaleY(var(--bar-peak, 0.2)); opacity: 0.9; }
+}
+
+/* Signal waveform scroll */
+@keyframes waveScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Fade up — generic utility */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Section utility */
+.section-padding {
+  padding-left: clamp(1.5rem, 5vw, 6rem);
+  padding-right: clamp(1.5rem, 5vw, 6rem);
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
