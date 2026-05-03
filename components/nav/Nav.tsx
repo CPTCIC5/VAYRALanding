@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useScrollProgress } from '@/hooks/useScrollProgress'
+import Button from '@/components/ui/Button'
 
 const navLinks = [
   { label: 'THESIS', href: '#thesis' },
@@ -26,17 +27,19 @@ export default function Nav() {
   }, [menuOpen])
 
   return (
-    <>
+    <div>
       <motion.nav
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 h-16"
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-16"
         style={{
           backgroundColor: scrolled ? 'rgba(0,0,0,0.9)' : 'transparent',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
           borderBottom: scrolled ? '1px solid rgba(26,26,26,0.8)' : 'none',
           transition: 'background-color 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease',
+          paddingLeft: 'clamp(1.5rem, 5vw, 3rem)',
+          paddingRight: 'clamp(1.5rem, 5vw, 3rem)',
         }}
       >
         {/* Wordmark */}
@@ -45,7 +48,7 @@ export default function Nav() {
         </a>
 
         {/* Desktop nav links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center" style={{ gap: 'var(--space-lg)' }}>
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -61,13 +64,7 @@ export default function Nav() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex">
-          <a
-            href="#contact"
-            className="px-5 py-2 text-[11px] tracking-[0.2em] text-[#C8A96E] border border-[#C8A96E] hover:bg-[#C8A96E] hover:text-black transition-all duration-200"
-            style={{ fontFamily: "'Space Mono', monospace" }}
-          >
-            CONTACT
-          </a>
+          <Button variant="outline" href="#contact">CONTACT</Button>
         </div>
 
         {/* Mobile hamburger */}
@@ -102,7 +99,8 @@ export default function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center gap-10"
+            className="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center"
+            style={{ gap: 'var(--space-xl)' }}
           >
             {[...navLinks, { label: 'CONTACT', href: '#contact' }].map((link, i) => (
               <motion.a
@@ -121,6 +119,6 @@ export default function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   )
 }

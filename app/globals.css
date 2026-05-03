@@ -139,10 +139,40 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Section utility */
+/* Spacing System — Consistent vertical rhythm */
+:root {
+  --space-xs: clamp(0.5rem, 1vw, 0.75rem);      /* 8-12px */
+  --space-sm: clamp(1rem, 2vw, 1.5rem);         /* 16-24px */
+  --space-md: clamp(1.5rem, 3vw, 2rem);         /* 24-32px */
+  --space-lg: clamp(2rem, 4vw, 3rem);           /* 32-48px */
+  --space-xl: clamp(3rem, 6vw, 5rem);           /* 48-80px */
+  --space-2xl: clamp(4rem, 8vw, 7rem);          /* 64-112px */
+  --space-3xl: clamp(5rem, 10vw, 9rem);         /* 80-144px */
+  
+  --section-padding-x: clamp(1.5rem, 5vw, 6rem);
+  --section-padding-y: clamp(4rem, 8vw, 7rem);
+  --section-padding-y-sm: clamp(3rem, 6vw, 5rem);
+}
+
+/* Section utilities */
 .section-padding {
-  padding-left: clamp(1.5rem, 5vw, 6rem);
-  padding-right: clamp(1.5rem, 5vw, 6rem);
+  padding-left: var(--section-padding-x);
+  padding-right: var(--section-padding-x);
+}
+
+.section-padding-y {
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-padding-y-sm {
+  padding-top: var(--section-padding-y-sm);
+  padding-bottom: var(--section-padding-y-sm);
+}
+
+/* Module list hover effect */
+.group:hover span {
+  color: #F0EDE8 !important;
 }
 
 /* Prefers reduced motion */

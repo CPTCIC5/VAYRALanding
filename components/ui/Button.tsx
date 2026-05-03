@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
 
 interface ButtonProps {
@@ -18,27 +17,78 @@ export default function Button({
   onClick,
   className = '',
 }: ButtonProps) {
-  const base =
-    'relative inline-flex items-center gap-2 px-7 py-3 text-sm tracking-widest uppercase overflow-hidden transition-all duration-200'
-  const styles =
-    variant === 'gold'
-      ? `${base} bg-[#C8A96E] text-black font-semibold hover:bg-transparent hover:text-[#C8A96E] border border-[#C8A96E]`
-      : `${base} bg-transparent text-[#C8A96E] border border-[#C8A96E] hover:bg-[#C8A96E] hover:text-black`
+  const baseStyle = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: '1rem',
+    paddingRight: '1rem',
+    paddingTop: '0.5rem',
+    paddingBottom: '0.5rem',
+    fontSize: '0.875rem',
+    letterSpacing: '0.2em',
+    textTransform: 'uppercase' as const,
+    fontFamily: "'Space Mono', monospace",
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: '#C8A96E',
+    borderRadius: '0',
+    transition: 'all 0.3s',
+    cursor: 'pointer',
+    textDecoration: 'none',
+  }
 
-  const content = (
-    <motion.span
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.97 }}
-      className={`${styles} ${className}`}
-      onClick={onClick}
-      style={{ fontFamily: "'Space Mono', monospace" }}
-    >
-      {children}
-    </motion.span>
-  )
+  const goldStyle = {
+    ...baseStyle,
+    backgroundColor: '#C8A96E',
+    color: '#000',
+    fontWeight: '700',
+  }
+
+  const outlineStyle = {
+    ...baseStyle,
+    backgroundColor: 'transparent',
+    color: '#C8A96E',
+  }
+
+  const style = variant === 'gold' ? goldStyle : outlineStyle
 
   if (href) {
-    return <a href={href}>{content}</a>
+    return (
+      <a 
+        href={href} 
+        className={className}
+        style={style}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = variant === 'gold' ? 'transparent' : '#C8A96E'
+          e.currentTarget.style.color = variant === 'gold' ? '#C8A96E' : '#000'
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = variant === 'gold' ? '#C8A96E' : 'transparent'
+          e.currentTarget.style.color = variant === 'gold' ? '#000' : '#C8A96E'
+        }}
+      >
+        {children}
+      </a>
+    )
   }
-  return content
+  
+  return (
+    <button 
+      type="button"
+      onClick={onClick}
+      className={className}
+      style={style}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = variant === 'gold' ? 'transparent' : '#C8A96E'
+        e.currentTarget.style.color = variant === 'gold' ? '#C8A96E' : '#000'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = variant === 'gold' ? '#C8A96E' : 'transparent'
+        e.currentTarget.style.color = variant === 'gold' ? '#000' : '#C8A96E'
+      }}
+    >
+      {children}
+    </button>
+  )
 }

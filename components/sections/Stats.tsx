@@ -39,22 +39,22 @@ function Counter({ value, suffix, decimal }: { value: number; suffix: string; de
 export default function Stats() {
   return (
     <section
-      className="relative overflow-hidden"
+      className="relative overflow-hidden section-padding section-padding-y-sm"
       style={{ background: '#050505', borderTop: '1px solid #1A1A1A', borderBottom: '1px solid #1A1A1A' }}
     >
       {/* Spectrum bars fill the background */}
       <SpectrumBars count={56} opacity={0.055} />
 
-      <div className="relative z-10 max-w-screen-xl mx-auto section-padding">
-        <div className="grid grid-cols-2 md:grid-cols-4">
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#1A1A1A]">
           {stats.map(({ value, suffix, label, decimal }, i) => (
             <div
               key={i}
-              className="flex flex-col gap-3 py-14 px-6 md:px-10"
-              style={{ borderRight: i < stats.length - 1 ? '1px solid #1A1A1A' : 'none' }}
+              className="flex flex-col items-center justify-center text-center px-6 md:px-8"
+              style={{ gap: 'var(--space-md)', minHeight: '200px' }}
             >
               <span
-                className="text-[clamp(3rem,5vw,5.5rem)] leading-none text-[#F0EDE8]"
+                className="text-[clamp(3.5rem,6vw,6rem)] leading-none text-[#F0EDE8]"
                 style={{
                   fontFamily: "'Bebas Neue', sans-serif",
                   textShadow: '0 0 40px rgba(200,169,110,0.2)',

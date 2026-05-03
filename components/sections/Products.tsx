@@ -35,12 +35,12 @@ export default function Products() {
   return (
     <section
       id="products"
-      className="relative section-padding py-24 overflow-hidden"
+      className="relative section-padding section-padding-y overflow-hidden"
       style={{ borderTop: '1px solid #1A1A1A' }}
     >
       <HexGrid opacity={0.028} />
 
-      <div className="relative z-10 max-w-screen-xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto">
 
         {/* Module label + heading */}
         <motion.div
@@ -48,11 +48,11 @@ export default function Products() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-14"
+          style={{ marginBottom: 'var(--space-2xl)' }}
         >
           <span
-            className="text-[10px] tracking-[0.35em] mb-3 block"
-            style={{ fontFamily: "'JetBrains Mono', monospace", color: '#C8A96E' }}
+            className="text-[10px] tracking-[0.35em] block"
+            style={{ fontFamily: "'JetBrains Mono', monospace", color: '#C8A96E', marginBottom: 'var(--space-md)' }}
           >
             CURRENT WORK
           </span>
@@ -63,8 +63,8 @@ export default function Products() {
             MODULE 01
           </h2>
           <p
-            className="mt-3 text-base max-w-xl leading-relaxed"
-            style={{ fontFamily: "'DM Sans', sans-serif", color: '#6B6B6B' }}
+            className="text-base max-w-xl leading-relaxed"
+            style={{ fontFamily: "'DM Sans', sans-serif", color: '#6B6B6B', marginTop: 'var(--space-md)' }}
           >
             Cognitive Electronic Warfare for the Indian Army. This is where we start.
             The systems below are the first output of a platform we intend to build across
@@ -73,7 +73,7 @@ export default function Products() {
         </motion.div>
 
         {/* Cards */}
-        <div className="flex overflow-x-auto md:overflow-visible md:grid md:grid-cols-3 gap-4 md:gap-5 pb-4 md:pb-0 snap-x snap-mandatory md:snap-none">
+        <div className="flex overflow-x-auto md:overflow-visible md:grid md:grid-cols-3 pb-4 md:pb-0 snap-x snap-mandatory md:snap-none" style={{ gap: 'var(--space-lg)' }}>
           {modules.map(({ label, name, sanskrit, description, stack }, i) => (
             <motion.div
               key={name}
@@ -103,20 +103,20 @@ export default function Products() {
               <SectionLabel className="mb-4 block">{label}</SectionLabel>
 
               <h3
-                className="text-[3.2rem] leading-none mb-1"
-                style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.02em', color: '#F0EDE8' }}
+                className="text-[3.2rem] leading-none"
+                style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.02em', color: '#F0EDE8', marginBottom: 'var(--space-xs)' }}
               >
                 {name}
               </h3>
 
               <span
-                className="text-[10px] tracking-widest mb-5"
-                style={{ fontFamily: "'JetBrains Mono', monospace", color: '#6B6B6B' }}
+                className="text-[10px] tracking-widest"
+                style={{ fontFamily: "'JetBrains Mono', monospace", color: '#6B6B6B', marginBottom: 'var(--space-lg)', display: 'block' }}
               >
                 {sanskrit}
               </span>
 
-              <div className="h-px mb-5" style={{ background: '#1A1A1A' }} />
+              <div className="h-px" style={{ background: '#1A1A1A', marginBottom: 'var(--space-lg)' }} />
 
               <p
                 className="text-sm leading-relaxed flex-1"
@@ -125,7 +125,7 @@ export default function Products() {
                 {description}
               </p>
 
-              <div className="mt-6 pt-4" style={{ borderTop: '1px solid #1A1A1A' }}>
+              <div className="pt-4" style={{ borderTop: '1px solid #1A1A1A', marginTop: 'var(--space-lg)' }}>
                 <span
                   className="text-[9px] tracking-[0.12em]"
                   style={{ fontFamily: "'Space Mono', monospace", color: '#6B6B6B' }}
@@ -145,8 +145,8 @@ export default function Products() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-10 text-sm"
-          style={{ fontFamily: "'Space Mono', monospace", color: '#6B6B6B' }}
+          className="text-sm"
+          style={{ fontFamily: "'Space Mono', monospace", color: '#6B6B6B', marginTop: 'var(--space-xl)' }}
         >
           Module 02, 03, and beyond are defined by what India needs next —
           not by what we decided to build today.

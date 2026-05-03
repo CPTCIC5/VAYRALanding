@@ -22,17 +22,17 @@ const columns = [
 
 export default function CaseForNow() {
   return (
-    <section className="section-padding py-24" style={{ background: '#050505', borderTop: '1px solid #1A1A1A' }}>
-      <div className="max-w-screen-xl mx-auto">
+    <section className="section-padding section-padding-y" style={{ background: '#050505', borderTop: '1px solid #1A1A1A' }}>
+      <div className="max-w-7xl mx-auto">
 
-        <div className="mb-16">
+        <div style={{ marginBottom: 'var(--space-2xl)' }}>
           <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="text-[10px] tracking-[0.35em] mb-4 block"
-            style={{ fontFamily: "'JetBrains Mono', monospace", color: '#C8A96E' }}
+            className="text-[10px] tracking-[0.35em] block"
+            style={{ fontFamily: "'JetBrains Mono', monospace", color: '#C8A96E', marginBottom: 'var(--space-lg)' }}
           >
             WHY NOW
           </motion.span>
@@ -57,39 +57,42 @@ export default function CaseForNow() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.25, duration: 0.5 }}
-            className="mt-3 text-base"
-            style={{ fontFamily: "'DM Sans', sans-serif", color: '#6B6B6B' }}
+            className="text-base"
+            style={{ fontFamily: "'DM Sans', sans-serif", color: '#6B6B6B', marginTop: 'var(--space-md)' }}
           >
             They will not stay converged.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 'clamp(2rem, 4vw, 3rem)' }}>
           {columns.map(({ num, title, body }, i) => (
             <motion.div
               key={num}
-              initial={{ clipPath: 'inset(100% 0 0 0)', opacity: 0 }}
-              whileInView={{ clipPath: 'inset(0% 0 0 0)', opacity: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-10%' }}
               transition={{ delay: i * 0.15, duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-              className="pt-7 pb-10 pr-10"
-              style={{ borderTop: '1px solid #C8A96E' }}
+              style={{ 
+                borderTop: '2px solid #C8A96E', 
+                paddingTop: 'var(--space-lg)', 
+                paddingBottom: 'var(--space-md)' 
+              }}
             >
               <span
-                className="text-xs tracking-[0.25em] mb-4 block"
-                style={{ fontFamily: "'JetBrains Mono', monospace", color: '#C8A96E' }}
+                className="text-xs tracking-[0.25em] block"
+                style={{ fontFamily: "'JetBrains Mono', monospace", color: '#C8A96E', marginBottom: 'var(--space-md)' }}
               >
                 {num}
               </span>
               <h3
-                className="text-sm mb-4 leading-snug"
-                style={{ fontFamily: "'Space Mono', monospace", color: '#F0EDE8' }}
+                className="text-base leading-snug font-medium"
+                style={{ fontFamily: "'Space Mono', monospace", color: '#F0EDE8', marginBottom: 'var(--space-md)' }}
               >
                 {title}
               </h3>
               <p
                 className="text-sm leading-relaxed"
-                style={{ fontFamily: "'DM Sans', sans-serif", color: '#6B6B6B' }}
+                style={{ fontFamily: "'DM Sans', sans-serif", color: '#6B6B6B', lineHeight: '1.7' }}
               >
                 {body}
               </p>

@@ -29,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="grain">
-      <body>
+      <body className='flex items-center justify-center mx-auto'>
         <CustomCursor />
         {children}
       </body>

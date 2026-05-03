@@ -35,21 +35,21 @@ export default function Vision() {
     <section
       id="ambition"
       ref={ref}
-      className="relative section-padding py-32 overflow-hidden"
-      style={{ background: '#000', borderTop: '1px solid #1A1A1A' }}
+      className="relative section-padding overflow-hidden"
+      style={{ background: '#000', borderTop: '1px solid #1A1A1A', paddingTop: 'var(--space-3xl)', paddingBottom: 'var(--space-3xl)' }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 60% 55% at 50% 50%, rgba(200,169,110,0.04) 0%, transparent 65%)' }}
       />
 
-      <div className="relative z-10 max-w-screen-xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto">
         <motion.span
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.4 }}
-          className="text-[10px] tracking-[0.35em] mb-8 block"
-          style={{ fontFamily: "'JetBrains Mono', monospace", color: '#C8A96E' }}
+          className="text-[10px] tracking-[0.35em] block"
+          style={{ fontFamily: "'JetBrains Mono', monospace", color: '#C8A96E', marginBottom: 'var(--space-xl)' }}
         >
           THE AMBITION
         </motion.span>
@@ -83,27 +83,27 @@ export default function Vision() {
           initial={{ opacity: 0, y: 14 }}
           animate={done ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-14 max-w-3xl"
-          style={{ borderLeft: '3px solid #C8A96E', paddingLeft: '1.5rem' }}
+          className="max-w-4xl"
+          style={{ borderLeft: '3px solid #C8A96E', paddingLeft: 'clamp(1.5rem, 3vw, 2.5rem)', marginBottom: 'var(--space-2xl)', marginTop: 'var(--space-xl)' }}
         >
           <p
             className="text-xl md:text-2xl leading-snug"
-            style={{ fontFamily: "'Space Mono', monospace", color: '#F0EDE8' }}
+            style={{ fontFamily: "'Space Mono', monospace", color: '#F0EDE8', lineHeight: '1.6' }}
           >
             "The electromagnetic domain will define the next century of Indian security.
             We intend to define that domain."
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 md:gap-24">
+        <div className="grid md:grid-cols-2" style={{ gap: 'var(--space-2xl)' }}>
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={done ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <p
-              className="text-base md:text-lg leading-relaxed mb-6"
-              style={{ fontFamily: "'DM Sans', sans-serif", color: '#6B6B6B' }}
+              className="text-base md:text-lg leading-relaxed"
+              style={{ fontFamily: "'DM Sans', sans-serif", color: '#6B6B6B', marginBottom: 'var(--space-lg)' }}
             >
               Cognitive EW for the Indian Army is Module 01. It is where we prove the thesis —
               that Indian AI can outthink adversary systems in the field.
@@ -122,7 +122,8 @@ export default function Vision() {
             initial={{ opacity: 0, y: 14 }}
             animate={done ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.35, duration: 0.6 }}
-            className="flex flex-col gap-6"
+            className="flex flex-col"
+            style={{ gap: 'var(--space-lg)' }}
           >
             {[
               { label: 'MODULE 01', desc: 'Cognitive EW — Indian Army', status: 'IN DEVELOPMENT' },
@@ -132,28 +133,31 @@ export default function Vision() {
             ].map(({ label, desc, status }, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between py-3"
+                className="group flex items-center justify-between py-3 transition-all duration-300 cursor-pointer"
                 style={{ borderBottom: '1px solid #1A1A1A' }}
               >
                 <div>
                   <span
-                    className="text-[10px] tracking-[0.2em] block mb-0.5"
+                    className="text-[10px] tracking-[0.2em] block mb-0.5 transition-colors duration-300"
                     style={{ fontFamily: "'JetBrains Mono', monospace", color: '#C8A96E' }}
                   >
                     {label}
                   </span>
                   <span
-                    className="text-sm"
-                    style={{ fontFamily: "'DM Sans', sans-serif", color: i === 0 ? '#F0EDE8' : '#6B6B6B' }}
+                    className="text-sm transition-colors duration-300"
+                    style={{ 
+                      fontFamily: "'DM Sans', sans-serif", 
+                      color: '#6B6B6B'
+                    }}
                   >
                     {desc}
                   </span>
                 </div>
                 <span
-                  className="text-[9px] tracking-[0.2em]"
+                  className="text-[9px] tracking-[0.2em] transition-colors duration-300"
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    color: i === 0 ? '#40A870' : '#2A2A2A',
+                    color: '#2A2A2A',
                   }}
                 >
                   {status}

@@ -1,6 +1,6 @@
 export default function Footer() {
   const footerLinks = [
-    { label: 'Mission', href: '#mission' },
+    { label: 'Mission', href: '#thesis' },
     { label: 'Products', href: '#products' },
     { label: 'Team', href: '#team' },
     { label: 'Contact', href: '#contact' },
@@ -8,7 +8,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="relative overflow-hidden" style={{ background: '#000', borderTop: '1px solid #1A1A1A' }}>
+    <footer className="relative overflow-hidden section-padding section-padding-y" style={{ background: '#000', borderTop: '1px solid #1A1A1A' }}>
 
       {/* Watermark — pinned at very bottom, behind everything */}
       <div
@@ -29,17 +29,22 @@ export default function Footer() {
         </span>
       </div>
 
-      {/* Main footer row */}
-      <div
-        className="relative z-10 section-padding max-w-screen-xl mx-auto"
-        style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem' }}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 items-center">
+      {/* Main footer content */}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        
+        {/* Top row - 3 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start mb-12">
 
           {/* Left — brand */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col items-center md:items-start">
             <span
-              style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '2rem', letterSpacing: '0.25em', color: '#C8A96E', lineHeight: 1 }}
+              style={{ 
+                fontFamily: "'Bebas Neue', sans-serif", 
+                fontSize: '2rem', 
+                letterSpacing: '0.25em', 
+                color: '#C8A96E', 
+                lineHeight: 1 
+              }}
             >
               VAYRA
             </span>
@@ -52,7 +57,7 @@ export default function Footer() {
           </div>
 
           {/* Center — nav links */}
-          <div className="flex flex-wrap gap-x-5 gap-y-2 md:justify-center">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3">
             {footerLinks.map(({ label, href }) => (
               <a
                 key={label}
@@ -66,10 +71,14 @@ export default function Footer() {
           </div>
 
           {/* Right — copyright */}
-          <div className="md:text-right">
+          <div className="text-center md:text-right">
             <p
               className="text-xs"
-              style={{ fontFamily: "'JetBrains Mono', monospace", color: '#6B6B6B' }}
+              style={{ 
+                fontFamily: "'JetBrains Mono', monospace", 
+                color: '#6B6B6B', 
+                lineHeight: '1.6' 
+              }}
             >
               © 2026 VAYRA.
               <br />
@@ -79,15 +88,23 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom rule */}
-        <div className="mt-10 pt-6" style={{ borderTop: '1px solid #1A1A1A' }}>
+        {/* Bottom row - company info */}
+        <div 
+          className="pt-8 text-center" 
+          style={{ borderTop: '1px solid #1A1A1A', marginTop: '20px' }}
+        >
           <p
             className="text-[10px] tracking-[0.2em]"
-            style={{ fontFamily: "'JetBrains Mono', monospace", color: '#2A2A2A' }}
+            style={{ 
+              fontFamily: "'JetBrains Mono', monospace", 
+              color: '#2A2A2A',
+              marginTop:'20px'
+            }}
           >
             VAYRA DEFENCE TECHNOLOGIES PVT. LTD. · iDEX SUPPORTED · BENGALURU, INDIA
           </p>
         </div>
+
       </div>
 
     </footer>
